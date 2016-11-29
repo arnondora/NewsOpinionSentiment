@@ -10,4 +10,9 @@ class RedirectController extends Controller
     {
       return view ('welcome');
     }
+
+    public function publisher ()
+    {
+      return view ('publisher');
+    }
 }

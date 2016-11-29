@@ -6,4 +6,25 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body > .container
+{
+  padding-bottom: 90px;
+}
+
+.container
+{
+  margin-top: 20px;
+}
+
+.card-img-top{
+  width:100%;
+  height:auto;
+}
+
+.navbar-fixed-bottom
+{
+  background-color: $theme-primary;
+  color:white;
+}

@@ -15,5 +15,8 @@ Route::get('/', 'RedirectController@home');
 
 Route::get('/publisher', 'RedirectController@publisher');
 
+//Add New News Publisher
+Route::post('/publisher/add', 'NewsController@newNewsPublisher');
+
 //Ajax in homepage calling
 Route::post('/news/feature', 'NewsController@showFeatureNews');

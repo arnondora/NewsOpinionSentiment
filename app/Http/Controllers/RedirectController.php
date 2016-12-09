@@ -13,6 +13,6 @@ class RedirectController extends Controller
 
     public function publisher ()
     {
-      return view ('publisher');
+      return view ('publisher',['publishers' => null]);
     }
 }

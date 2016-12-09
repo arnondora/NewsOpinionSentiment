@@ -22,4 +22,12 @@ class NewsController extends Controller
       $publisher->save();
       return back()->with('status','Add News Publisher Successfully');
     }
+
+    public function deleteNewsPublisher (Request $request)
+    {
+      $publisher = NewsPublisher::find($request->newsID);
+      $publisher->delete();
+
+      return back()->with('status','Delete News Publisher Successfully');
+    }
 }

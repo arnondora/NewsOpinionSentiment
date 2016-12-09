@@ -13,6 +13,18 @@ class NewsController extends Controller
       return (String) view('news.feature');
     }
 
+    public function publisherInfo ($newsId)
+    {
+      $publisher = NewsPublisher::find($newsId);
+
+      $rss = simplexml_load_file($publisher->url);
+      $namespaces = $rss->getNamespaces(true);
+
+      $newses = $rss->channel->item;
+
+      return view('publisher.publisherInfo',['publisher' => $publisher, 'newses' => $newses, 'namespaces' => $namespaces]);
+    }
+
     public function newNewsPublisher (Request $request)
     {
       $publisher = new NewsPublisher();

@@ -15,7 +15,7 @@
           <div class = "row"><h1>News Search Engine</h1></div>
 
           <div class = "row">
-            <form type = "post">
+            <form method = "post">
               <div class = "form-group">
                 <label>Search Keyword</label>
                 <input type="text" class = "form-control" name="keyword" id = "searchkeyword" autofocus>

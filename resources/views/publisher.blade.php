@@ -3,6 +3,14 @@
 @section('title','News Publisher Management')
 
 @section('content')
+  @if(isset($status))
+    <div class = "row">
+      <div class = "alert alert-success" role = "success-alert">
+        <strong>Well Done! </strong>{{$status}}
+      </div>
+    </div>
+  @endif
+
   <div class = "row">
     <div class = "card card-block">
       <h4 class = "card-title">New News Publisher</h4>

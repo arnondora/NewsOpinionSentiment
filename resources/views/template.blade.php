@@ -14,6 +14,14 @@
         <div class = "container">
           <div class = "row"><h1>@yield('title')</h1></div>
 
+          @if(isset($status))
+            <div class = "row">
+              <div class = "alert alert-success" role = "success-alert">
+                <strong>Well Done! </strong>{{$status}}
+              </div>
+            </div>
+          @endif
+
           @yield('content')
 
           @include('footer')

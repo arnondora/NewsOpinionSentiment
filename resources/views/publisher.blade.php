@@ -40,7 +40,14 @@
               <td>{{$publisher->name}}</td>
               <td><a href = "{{$publisher->url}}">{{$publisher->url}}</a></td>
               <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+              <td>
+                <form action = "/publisher/delete" method = "post">
+                  {{csrf_field()}}
+                  <input type = "hidden" name = "_method" value = "delete">
+                  <input type = "hidden" name = "newsID" value = "{{$publisher->id}}">
+                  <button class = "btn btn-danger"><i class = "fa fa-trash"></i></button>
+                </form>
+              </td>
             </tr>
           @endforeach
       </table>

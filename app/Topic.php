@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
   protected $table = "Topic";
-  public $timestamp = true;
+  public $timestamps = true;
 
   public function news ()
   {

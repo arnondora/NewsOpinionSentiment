@@ -21,5 +21,8 @@ Route::post('/publisher/add', 'NewsController@newNewsPublisher');
 //Delete News Publisher
 Route::delete('/publisher/delete', 'NewsController@deleteNewsPublisher');
 
+//News Publisher Information
+Route::get('/publisher/{NewsId}', 'NewsController@PublisherInfo');
+
 //Ajax in homepage calling
 Route::post('/news/feature', 'NewsController@showFeatureNews');

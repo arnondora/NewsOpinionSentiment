@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\NewsPublisher;
+
 class RedirectController extends Controller
 {
     public function home ()
@@ -13,6 +15,6 @@ class RedirectController extends Controller
 
     public function publisher ()
     {
-      return view ('publisher',['publishers' => null]);
+      return view ('publisher',['publishers' => NewsPublisher::all()]);
     }
 }

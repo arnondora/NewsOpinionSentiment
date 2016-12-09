@@ -37,8 +37,8 @@
         </tr>
           @foreach ($publishers as $publisher)
             <tr>
-              <td>$publisher->name</td>
-              <td>$publisher->url</td>
+              <td>{{$publisher->name}}</td>
+              <td><a href = "{{$publisher->url}}">{{$publisher->url}}</a></td>
               <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
               <td><i class="fa fa-trash" aria-hidden="true"></i></td>
             </tr>
@@ -57,8 +57,8 @@
 
       function validateField ()
       {
-        if ($('#name').val() === "" || $('#url').val() === "") {$('#submitBtn').prop('disabled', false);}
-        else if ($('#name').val() !== "" && $('url').val() !== "") {$('#submitBtn').prop('disabled', true);}
+        if ($('#name').val() === "" || $('#url').val() === "") {$('#submitBtn').prop('disabled', true);}
+        else if ($('#name').val() !== "" && $('url').val() !== "") {$('#submitBtn').prop('disabled', false);}
       }
 
       $('#name').change(function() {

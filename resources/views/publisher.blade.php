@@ -37,7 +37,7 @@
         </tr>
           @foreach ($publishers as $publisher)
             <tr>
-              <td>{{$publisher->name}}</td>
+              <td><a href = "/publisher/{{$publisher->id}}">{{$publisher->name}}<a></td>
               <td><a href = "{{$publisher->url}}">{{$publisher->url}}</a></td>
               <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
               <td>

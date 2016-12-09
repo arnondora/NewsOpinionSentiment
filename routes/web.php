@@ -18,5 +18,8 @@ Route::get('/publisher', 'RedirectController@publisher');
 //Add New News Publisher
 Route::post('/publisher/add', 'NewsController@newNewsPublisher');
 
+//Delete News Publisher
+Route::delete('/publisher/delete', 'NewsController@deleteNewsPublisher');
+
 //Ajax in homepage calling
 Route::post('/news/feature', 'NewsController@showFeatureNews');

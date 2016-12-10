@@ -10,7 +10,8 @@
         "vdb/php-spider": "^0.2.0",
         "nategood/httpful": "^0.2.20",
         "doctrine/dbal": "^2.5",
-        "paquettg/php-html-parser": "^1.7"
+        "paquettg/php-html-parser": "^1.7",
+        "aylien/textapi": "^0.6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

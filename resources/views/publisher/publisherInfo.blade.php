@@ -28,13 +28,22 @@
         <div class = "col-md-6">
       @endif
         <div class = "card">
-          <img class = "card-img-top" src = "{{$news->children($namespaces['media'])->thumbnail->attributes()->url}}" alt = "{{$news->title}}">
+          @if ($loop->iteration-1 < count($thumbnailURLs))
+            <img class = "card-img-top" src = "{{$thumbnailURLs[$loop->iteration-1]}}" alt = "{{$news->title}}">
+          @endif
           <div class = "card-block">
             <h4 class = "card-title">{{$news->title}}</h4>
             <p>Publication Date : {{date('d M Y',strtotime($news->pubDate))}}</p>
             <p>{{$news->link}}</p>
-            <a href = "{{$news->link}}" class = "btn btn-primary">Go to orginal site</a>
-            <a href = "#" class = "btn btn-info">Parse This News</a>
+            <form action = "/news/parser" method="post">
+              @if (isset($thumbnailURLs[$loop->iteration-1]))
+                <input type = "hidden" name = "thumbnailURL" value = "{{$thumbnailURLs[$loop->iteration-1]}}">
+              @endif
+              <input type = "hidden" name " link" value = "{{$news->link}}">
+              {{csrf_field()}}
+              <a href = "{{$news->link}}" class = "btn btn-primary">Go to orginal site</a>
+              <input type = "submit" class = "btn btn-info" value = "Parse This News">
+            </form>
           </div>
         </div>
       </div>

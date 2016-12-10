@@ -26,3 +26,6 @@ Route::get('/publisher/{NewsId}', 'NewsController@PublisherInfo');
 
 //Ajax in homepage calling
 Route::post('/news/feature', 'NewsController@showFeatureNews');
+
+//News Parser Preview Phase
+Route::post('/news/parser', 'NewsController@parserPreview');

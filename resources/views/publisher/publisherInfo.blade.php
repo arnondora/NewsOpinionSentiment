@@ -40,6 +40,8 @@
                 <input type = "hidden" name = "thumbnailURL" value = "{{$thumbnailURLs[$loop->iteration-1]}}">
               @endif
               <input type = "hidden" name = "link" value = "{{$news->link}}">
+              <input type = "hidden" name = "publisher" value = "{{$publisher->id}}">
+              <input type = "hidden" name = "publishDateTime" value = "{{date('d M Y',strtotime($news->pubDate))}}">
               {{csrf_field()}}
               <a href = "{{$news->link}}" class = "btn btn-primary">Go to orginal site</a>
               <input type = "submit" class = "btn btn-info" value = "Parse This News">

@@ -39,7 +39,7 @@
               @if (isset($thumbnailURLs[$loop->iteration-1]))
                 <input type = "hidden" name = "thumbnailURL" value = "{{$thumbnailURLs[$loop->iteration-1]}}">
               @endif
-              <input type = "hidden" name "link" value = "{{$news->link}}">
+              <input type = "hidden" name = "link" value = "{{$news->link}}">
               {{csrf_field()}}
               <a href = "{{$news->link}}" class = "btn btn-primary">Go to orginal site</a>
               <input type = "submit" class = "btn btn-info" value = "Parse This News">

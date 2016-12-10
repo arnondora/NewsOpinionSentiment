@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use PHPHtmlParser\Dom;
+
 use App\NewsPublisher;
 
 class NewsController extends Controller
@@ -59,5 +61,43 @@ class NewsController extends Controller
       $publisher->delete();
 
       return back()->with('status','Delete News Publisher Successfully');
+    }
+
+    public function parserPreview (Request $request)
+    {
+      //init link and thumbnail url
+      $url = $request->link;
+      $publishDateTime = $request->publishDateTime;
+      $publisher = NewsPublisher::find($request->publisher);
+      if (isset($request->thumbnailURL)) $thumbnailURL = $request->thumbnailURL; else $thumbnailURL = null;
+
+      //download webpage
+      $page = new Dom();
+      $page = $page->loadFromFile($url);
+
+      //get title
+      $title = $page->find('.story-body__h1')[0];
+
+      //get content
+      $contentGroup = $page->find('p');
+
+      $contents = array();
+      foreach ($contentGroup as $content)
+      {
+        //remove unnessary words
+        if (strpos($content->text, " ") == false) continue;
+        if (strcmp($content->text, "Share this with") == 0 || strcmp($content->text, "Copy this link") == 0) continue;
+
+        array_push($contents,$content->text);
+      }
+
+      $result = array();
+      $result['title'] = $title->text;
+      $result['thumbnail'] = $thumbnailURL;
+      $result['publisher'] = $publisher;
+      $result['publishDateTime'] = $publishDateTime;
+      $result['content'] = $contents;
+
+      return view('news.parser.preview',['data' => $result]);
     }
 }

@@ -21,8 +21,26 @@ class NewsController extends Controller
       $namespaces = $rss->getNamespaces(true);
 
       $newses = $rss->channel->item;
+      $thumbnailURLs = array();
 
-      return view('publisher.publisherInfo',['publisher' => $publisher, 'newses' => $newses, 'namespaces' => $namespaces]);
+      foreach ($newses as $news)
+      {
+        foreach ($news->children($namespaces['media']) as $element)
+        {
+          if (strcmp($element->getName(),"thumbnail") == 0)
+          {
+            array_push($thumbnailURLs,$news->children($namespaces['media'])->thumbnail->attributes()->url);
+          }
+
+          elseif (strcmp($element->getName(),"group") == 0)
+          {
+            $mediaGroup = $news->children($namespaces['media'])->group;
+            array_push ($thumbnailURLs,$mediaGroup->children($namespaces['media'])->content->attributes()->url);
+          }
+          else array_push($thumbnailURLs,null);
+        }
+      }
+      return view('publisher.publisherInfo',['publisher' => $publisher, 'newses' => $newses, 'namespaces' => $namespaces, 'thumbnailURLs' => $thumbnailURLs]);
     }
 
     public function newNewsPublisher (Request $request)

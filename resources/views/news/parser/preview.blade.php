@@ -13,7 +13,7 @@
   @endif
 
   <div class = "row" style = "margin-top:20px" for = "content">
-    <p>
+    <p class = "text-justify">
       @foreach ($data['content'] as $content)
         {{$content}}
       @endforeach
@@ -25,14 +25,11 @@
   </div>
 
   <div class = "row" style = "margin-top:20px;">
-    <div class = "col-md-6">
-      <h3>Hashtag Analysis</h3>
-      <ul>
-        @foreach ($data['hashtags'] as $hashtag)
-          <li><a href = "https://www.twitter.com/#">{{$hashtag}}</a></li>
-        @endforeach
-      </ul>
-    </div>
+    <h3>Tags</h3>
+    <ul class = 'tags'>
+      @foreach ($data['hashtags'] as $hashtag)
+        <a href = "https://www.twitter.com/{{$hashtag}}"><li class = "tag">{{$hashtag}}</li></a>
+      @endforeach
+    </ul>
   </div>
-
 @endsection

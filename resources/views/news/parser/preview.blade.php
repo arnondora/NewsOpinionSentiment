@@ -24,4 +24,15 @@
     <small class = "text-muted">Source : {{$data['publisher']->name}}</small>
   </div>
 
+  <div class = "row" style = "margin-top:20px;">
+    <div class = "col-md-6">
+      <h3>Hashtag Analysis</h3>
+      <ul>
+        @foreach ($data['hashtags'] as $hashtag)
+          <li><a href = "https://www.twitter.com/#">{{$hashtag}}</a></li>
+        @endforeach
+      </ul>
+    </div>
+  </div>
+
 @endsection

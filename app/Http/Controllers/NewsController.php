@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use PHPHtmlParser\Dom;
 
-use AYLIEN\TextAPI;
-
 use App\NewsPublisher;
 
 class NewsController extends Controller
@@ -94,8 +92,7 @@ class NewsController extends Controller
       }
 
       //hashtag analysis
-      $textapi = new TextAPI("0733feb6", "e47db1a59b51d0fd49576f609cf544a1");
-      $hashtags = $textapi->Hashtags(array('url' => $url));
+      $hashtags = getHashtags($url);
 
       $result = array();
       $result['title'] = $title->text;

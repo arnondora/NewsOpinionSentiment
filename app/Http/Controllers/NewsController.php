@@ -55,6 +55,42 @@ class NewsController extends Controller
       return back()->with('status','Add News Publisher Successfully');
     }
 
+    public function newSamplePublisher ()
+    {
+
+      $publishers = [
+        ["name" => "BBC News - News Front Page", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml"],
+        ["name" => "BBC News - World", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/world/rss.xml"],
+        ["name" => "BBC News - UK", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/uk/rss.xml"],
+        ["name" => "BBC News - England", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/england/rss.xml"],
+        ["name" => "BBC News - Northern Ireland", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/northern_ireland/rss.xml"],
+        ["name" => "BBC News - Scotland", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/scotland/rss.xml"],
+        ["name" => "BBC News - Wales", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/wales/rss.xml"],
+        ["name" => "BBC News - Business", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/business/rss.xml"],
+        ["name" => "BBC News - Politics", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/uk_politics/rss.xml"],
+        ["name" => "BBC News - Health", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/health/rss.xml"],
+        ["name" => "BBC News - Education", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/education/rss.xml"],
+        ["name" => "BBC News - Science/Nature", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/sci/tech/rss.xml"],
+        ["name" => "BBC News - Technology", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/technology/rss.xml"],
+        ["name" => "BBC News - Entertainment", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/entertainment/rss.xml"],
+        ["name" => "BBC News - Magazine", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/magazine/rss.xml"],
+        ["name" => "BBC News - Have Your Say", "link" => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/talking_point/rss.xml"],
+        ["name" => "BBC News - Latest Published Stories", "link" => "http://feeds.bbci.co.uk/news/system/latest_published_content/rss.xml"],
+
+      ];
+
+      foreach ($publishers as $publisher)
+      {
+        $publisherObj = new NewsPublisher();
+        $publisherObj->name = $publisher['name'];
+        $publisherObj->url = $publisher['link'];
+
+        $publisherObj->save();
+      }
+
+      return back()->with('status','Add News Publisher Successfully');
+    }
+
     public function deleteNewsPublisher (Request $request)
     {
       $publisher = NewsPublisher::find($request->newsID);

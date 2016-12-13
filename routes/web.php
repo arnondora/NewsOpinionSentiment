@@ -18,6 +18,9 @@ Route::get('/publisher', 'RedirectController@publisher');
 //Add New News Publisher
 Route::post('/publisher/add', 'NewsController@newNewsPublisher');
 
+//Add Sample News Publisher
+Route::get('/publisher/sample/add', 'NewsController@newSamplePublisher');
+
 //Delete News Publisher
 Route::delete('/publisher/delete', 'NewsController@deleteNewsPublisher');
 

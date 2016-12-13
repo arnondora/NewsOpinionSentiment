@@ -16,7 +16,7 @@
     <div class="card-block">
       <h4 class="card-title">Chinese power plant bosses arrested over deadly platform collapse</h4>
       <h5 class = "text-muted">CNN</h5>
-      <p><span style = "color:#4CAF50" class = "fa fa-thumbs-up"> 20</span> <span style = "color:#F44336" class = "fa fa-thumbs-down"> 50</span></p>
+      <p><span style = "color:#4CAF50" class = "fa fa-thumbs-up"></span> <span style = "color:#F44336" class = "fa fa-thumbs-down"> 50</span></p>
       <p class="card-text">Nine people have been arrested in connection to a deadly accident at a Chinese power plant that killed 74 people last week, according to China's state news agency Xinhua.</p>
     </div>
   </div>

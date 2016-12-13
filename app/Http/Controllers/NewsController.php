@@ -14,7 +14,7 @@ class NewsController extends Controller
 {
     public function showFeatureNews ()
     {
-      return (String) view('news.feature');
+      return (String) view('news.feature', ['newses' => News::all()]);
     }
 
     public function publisherInfo ($newsId)

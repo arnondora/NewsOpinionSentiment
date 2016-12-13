@@ -17,7 +17,7 @@
           <div class = "row">
             <form method = "post">
               <div class = "form-group">
-                <label>Search Keyword</label>
+                <label>Search Keyword (<a href = "/news/saved/">Manage Saved News</a> , <a href = "/publisher">Manage News Publisher</a>)</label>
                 <input type="text" class = "form-control" name="keyword" id = "searchkeyword" autofocus>
               </div>
             </form>

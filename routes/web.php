@@ -13,6 +13,8 @@
 
 Route::get('/', 'RedirectController@home');
 
+Route::post('/news/search', 'NewsController@searchNews');
+
 Route::get('/publisher', 'RedirectController@publisher');
 
 //Add New News Publisher

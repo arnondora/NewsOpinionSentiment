@@ -56,13 +56,28 @@
         });
       }
 
+      function searchNews ()
+      {
+        $.ajax({
+          type: 'POST',
+          url: "/news/search",
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          data: {'keyword': $('#searchkeyword').val()},
+          dataType: "text",
+          success: function(resultData)
+          {
+            $('#caption').text("Search Result For " + $('#searchkeyword').val());
+            $('#feature').html(resultData);
+          }
+        });
+      }
+
       $(document).ready(function(){
         getFeatureNews();
         $('#searchkeyword').on('input propertychange paste', function() {
           if ($('#searchkeyword').val() != "")
           {
-            $('#caption').text("Search Result for " + $('#searchkeyword').val());
-            $('#feature').html("");
+            searchNews();
           }
           else
           {

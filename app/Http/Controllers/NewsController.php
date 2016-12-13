@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
 use PHPHtmlParser\Dom;
 
 use App\NewsPublisher;
@@ -222,5 +224,11 @@ class NewsController extends Controller
       }
       catch (Exeption $e) {return back()->with($e);}
       return back();
+    }
+
+    public function searchNews (Request $request)
+    {
+      $keyword = $request->keyword;
+      return (String) view('news.feature', ['newses' => DB::table('News')->where("NewsHeader","like","%" . $keyword . "%")->get()]);
     }
 }

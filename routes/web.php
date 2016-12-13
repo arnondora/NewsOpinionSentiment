@@ -32,3 +32,6 @@ Route::post('/news/feature', 'NewsController@showFeatureNews');
 
 //News Parser Preview Phase
 Route::post('/news/parser', 'NewsController@parserPreview');
+
+//Add News to Database
+Route::post('/news/add', 'NewsController@addNews');

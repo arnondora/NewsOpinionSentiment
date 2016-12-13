@@ -165,6 +165,7 @@ class NewsController extends Controller
 
       $result = array();
       $result['title'] = $title->text;
+      $result['url'] = $url;
       $result['thumbnail'] = $thumbnailURL;
       $result['publisher'] = $publisher;
       $result['publishDateTime'] = $publishDateTime;

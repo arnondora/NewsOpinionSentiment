@@ -25,5 +25,5 @@
     @if ($loop->iteration % 2 == 0)</div>@endif
   @endforeach
 @else
-  <h4>There's no feature news. You can save news by go to this <a href = "/publisher">page</a></h4>
+  <h4>There's no news that match your criteria. You can save news by go to this <a href = "/publisher">page</a></h4>
 @endif

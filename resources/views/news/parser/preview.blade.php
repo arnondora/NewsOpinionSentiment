@@ -6,6 +6,23 @@
   <div class = "row"><h5 class = "text-muted">From : {{$data['publisher']->name}}</h5></div>
   <div class = "row"><h5 class = "text-muted">Updated : {{$data['publishDateTime']}}</h5></div>
 
+  <div class = "row">
+    <form method = "post" action = "/news/add">
+      <input type = "hidden" name = "header" value = "{{$data['title']}}">
+      <input type = "hidden" name = "publishDate" value = "{{$data['publishDateTime']}}">
+      <input type = "hidden" name = "link" value = "{{$data['url']}}">
+      <input type = "hidden" name = "publisherID" value = "{{$data['publisher']->id}}">
+      <input type = "hidden" name = "thumbnailURL" value = "{{$data['thumbnail']}}">
+      <input type = "hidden" name = "body" value = "
+        @foreach ($data['content'] as $content)
+          {{$content}}
+        @endforeach
+      ">
+      {{csrf_field()}}
+      <input type = "submit" class = "btn btn-success pull-right" value = "Save This News">
+    </form>
+  </div>
+
   @if(isset($data['thumbnail']))
     <div class = "row" style = "margin-top:20px;">
       <center><img src="{{$data['thumbnail']}}" style = "width:50%; height:auto;" class = "img-responsive" alt="{{$data['title']}}"></center>

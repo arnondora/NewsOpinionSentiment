@@ -19,6 +19,7 @@
 
         <div class = "form-group">
           {{ csrf_field() }}
+          <a href = "/publisher/sample/add" class = "btn btn-info pull-right" style = "color:white; margin-left:10px;">Add Sample Data</a>
           <input class = "btn btn-primary pull-right" id = "submitBtn" type = "submit" disabled="true" value = "Add News Publisher">
         </div>
 

@@ -1,5 +1,6 @@
 @if (count($newses) > 0)
   @foreach ($newses as $news)
+    @if ($loop->iteration % 2 == 1)<div class = "row">@endif
     <div class = "col-md-6">
       <div class="card">
         <img class="card-img-top" src="{{$news->NewsThumbnailLink}}" alt="Card image cap">
@@ -13,7 +14,7 @@
             @endif
             <input type = "hidden" name = "link" value = "{{$news->NewsLink}}">
             <input type = "hidden" name = "publisher" value = "{{$news->PublisherID}}">
-            <input type = "hidden" name = "publishDateTime" value = "{{date('d M Y',strtotime($news->pubDate))}}">
+            <input type = "hidden" name = "publishDateTime" value = "{{$news->PublishcationDate}}">
             <input type = "hidden" name = "isSave" value = "1">
             {{csrf_field()}}
             <input type = "submit" class = "btn btn-info" value = "Read More">
@@ -21,6 +22,7 @@
         </div>
       </div>
     </div>
+    @if ($loop->iteration % 2 == 0)</div>@endif
   @endforeach
 @else
   <h4>There's no feature news. You can save news by go to this <a href = "/publisher">page</a></h4>

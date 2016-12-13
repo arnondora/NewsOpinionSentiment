@@ -55,13 +55,24 @@ function getTextAnalyticConnector ()
 }
 
 //AYLIEN Sentiment API
-function getSentimentScore ($text)
+function getSentimentResult ($text)
 {
   $textapi = getTextAnalyticConnector();
   $sentiment = $textapi->Sentiment(array('text' => $text));
-  var_dump($sentiment->polarity);
-  var_dump($sentiment->polarity_confidence);
+
+  return $sentiment;
 }
+
+function getSentimentPolarity ($sentimentObj)
+{
+  return $sentimentObj->polarity;
+}
+
+function getSentimentPolarityConfidence ($sentimentObj)
+{
+  return $sentimentObj->polarity_confidence;
+}
+
 
 //AYLIEN Hashtag Analysis
 function getHashtags ($url)

@@ -43,6 +43,11 @@ function extractTweetProfilePictureUrl ($tweetProfile)
   return $tweetProfile->profile_image_url_https;
 }
 
+function extractTweetProfileLink ($tweetProfile)
+{
+  return "https://www.twitter.com/" . extractTweetProfileScreenName($tweetProfile);
+}
+
 //AYLIEN API
 function getTextAnalyticConnector ()
 {

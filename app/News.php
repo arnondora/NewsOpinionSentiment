@@ -11,11 +11,6 @@ class News extends Model
 
   public function publisher ()
   {
-    return $this->hasOne('NewsPublisher');
-  }
-
-  public function topics ()
-  {
-    return $this->hasMany('TopicNews','NewsID');
+    return $this->belongsTo(NewsPublisher::class,'NewsPublisher','id');
   }
 }

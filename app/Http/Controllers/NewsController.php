@@ -177,6 +177,9 @@ class NewsController extends Controller
       $result['tweet_feeling'] = $sentimentFeelings;
       $result['content'] = $contents;
 
+      if (isset($request->isSave))$result['isSave'] = $request->isSave;
+      else $result['isSave'] = 0;
+
       return view('news.parser.preview',['data' => $result]);
     }
 

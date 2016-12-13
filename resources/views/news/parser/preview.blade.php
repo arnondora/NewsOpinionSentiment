@@ -19,7 +19,9 @@
         @endforeach
       ">
       {{csrf_field()}}
-      <input type = "submit" class = "btn btn-success pull-right" value = "Save This News">
+      @if ($data['isSave'] == 0) <input type = "submit" class = "btn btn-success pull-right" value = "Save This News">
+      @else <input type = "submit" class = "btn btn-success pull-right" disabled="true" value = "Saved">
+      @endif
     </form>
   </div>
 

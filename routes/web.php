@@ -36,5 +36,8 @@ Route::post('/news/parser', 'NewsController@parserPreview');
 //Add News to Database
 Route::post('/news/add', 'NewsController@addNews');
 
+//Delete News from database
+Route::get('/news/delete/{newsID}', 'NewsController@deleteNews');
+
 //Show Saved News
 Route::get('/news/saved', 'NewsController@showSavedNews');

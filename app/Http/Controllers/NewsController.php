@@ -209,4 +209,15 @@ class NewsController extends Controller
     {
         return view('news.savedNews.list',["newses" => News::all()]);
     }
+
+    public function deleteNews ($newsID)
+    {
+      try
+      {
+        $news = News::findOrFail($newsID);
+        $news->delete();
+      }
+      catch (Exeption $e) {return back()->with($e);}
+      return back();
+    }
 }

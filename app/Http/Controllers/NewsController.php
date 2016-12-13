@@ -94,12 +94,48 @@ class NewsController extends Controller
       //hashtag analysis
       $hashtags = getHashtags($url);
 
+      //retriving tweet
+      $tweets = extractTweetStatuses(searchTweet($hashtags->hashtags[0]));
+
+      //sentiment for each text
+      $sentimentObjects = array();
+
+      foreach ($tweets as $tweet)
+      {
+        array_push($sentimentObjects,getSentimentResult(extractTweetText($tweet)));
+      }
+
+      //sentiment value
+      $sentimentFeelings = array();
+      foreach ($sentimentObjects as $sentimentObject)
+      {
+        if (strcmp(getSentimentPolarity($sentimentObject), "positive") == 0)
+        {
+          $feeling['color'] = "#4CAF50";
+          $feeling['symbolClass'] = "fa-thumbs-up";
+        }
+        elseif (strcmp(getSentimentPolarity($sentimentObject), "negative") == 0)
+        {
+          $feeling['color'] = "#FBC02D";
+          $feeling['symbolClass'] = "fa-meh-o";
+        }
+        else {
+          $feeling['color'] = "#F44336";
+          $feeling['symbolClass'] = "fa-thumbs-down";
+        }
+
+        array_push($sentimentFeelings,$feeling);
+      }
+
       $result = array();
       $result['title'] = $title->text;
       $result['thumbnail'] = $thumbnailURL;
       $result['publisher'] = $publisher;
       $result['publishDateTime'] = $publishDateTime;
       $result['hashtags'] = $hashtags->hashtags;
+      $result['tweets'] = $tweets;
+      $result['tweets_sentiment'] = $sentimentObjects;
+      $result['tweet_feeling'] = $sentimentFeelings;
       $result['content'] = $contents;
 
       return view('news.parser.preview',['data' => $result]);

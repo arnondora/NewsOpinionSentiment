@@ -32,4 +32,24 @@
       @endforeach
     </ul>
   </div>
+
+  <div class = "row" style = "margin-top:20px">
+    <h3>Related Tweet</h3>
+
+    <div class = "row" for = "tweet">
+      @foreach ($data['tweets'] as $tweet)
+        <div class = "row" for = "{{extractTweetText($tweet)}}">
+          <div class = "col-xs-1"><img class = "img-responsive" src = "{{extractTweetProfilePictureUrl(extractTweetOwner($tweet))}}"></div>
+          <div class = "col-xs-11">
+            <div class = "row"><a href = "{{extractTweetProfileLink(extractTweetOwner($tweet))}}"><strong>{{extractTweetProfileScreenName(extractTweetOwner($tweet))}}</strong></a></div>
+            <div class = "row" style = "color:{{$data['tweet_feeling'][$loop->index]['color']}}">
+              <span class = "fa {{$data['tweet_feeling'][$loop->index]['symbolClass']}}"></span>
+              {{round(getSentimentPolarityConfidence($data['tweets_sentiment'][$loop->index]) * 100, 2)}}%
+            </div>
+            <div class = "row"><p>{{extractTweetText($tweet)}}</p></div>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
 @endsection

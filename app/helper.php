@@ -18,16 +18,29 @@ function searchTweet ($query)
   return $connection->get('search/tweets', $query);
 }
 
-function extractText ($tweets)
+function extractTweetStatuses ($rawTweetObject)
 {
-  $tweetsText = array();
+  return $rawTweetObject->statuses;
+}
 
-  foreach ($tweets->statuses as $result)
-  {
-    array_push($tweetsText,$result->text);
-  }
+function extractTweetText ($tweet)
+{
+  return $tweet->text;
+}
 
-  return $tweetsText;
+function extractTweetOwner ($tweet)
+{
+  return $tweet->user;
+}
+
+function extractTweetProfileScreenName ($tweetProfile)
+{
+  return $tweetProfile->screen_name;
+}
+
+function extractTweetProfilePictureUrl ($tweetProfile)
+{
+  return $tweetProfile->profile_image_url_https;
 }
 
 //AYLIEN API

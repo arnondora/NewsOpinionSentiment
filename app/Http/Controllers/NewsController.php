@@ -8,6 +8,8 @@ use PHPHtmlParser\Dom;
 
 use App\NewsPublisher;
 
+use App\News;
+
 class NewsController extends Controller
 {
     public function showFeatureNews ()
@@ -176,5 +178,30 @@ class NewsController extends Controller
       $result['content'] = $contents;
 
       return view('news.parser.preview',['data' => $result]);
+    }
+
+    public function addNews (Request $request)
+    {
+      $title = $request->header;
+      $body = $request->body;
+      $publishDate = $request->publishDate;
+      $link = $request->link;
+      $publisher = NewsPublisher::find($request->publisherID);
+      $thumbnail = $request->thumbnailURL;
+
+      //create new News
+      $news = new News();
+
+      //assign value to news
+      $news->NewsHeader = $title;
+      $news->NewsBody = $body;
+      $news->PublishcationDate = $publishDate;
+      $news->NewsLink = $link;
+      $news->NewsThumbnailLink = $thumbnail;
+      $news->PublisherID = $request->publisherID;
+
+      $news->save();
+
+      return redirect('/publisher')->with(["success" => "Add new news success"]);
     }
 }

@@ -11,7 +11,7 @@ function searchTweet ($query)
 
   $query = array(
     "q" => $query,
-    "count" => 100,
+    "count" => 10,
     "result_type" => "mixed"
   );
 

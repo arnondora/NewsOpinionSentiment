@@ -16,7 +16,6 @@ class CreateTopicNewsTable extends Migration
         Schema::create('TopicNews', function (Blueprint $table) {
             $table->integer('NewsID')->unsigned();
             $table->integer('TopicID')->unsigned();
-            $table->timestamps();
 
             $table->foreign('NewsID')->references('id')->on('News');
             $table->foreign('TopicID')->references('id')->on('Topic');

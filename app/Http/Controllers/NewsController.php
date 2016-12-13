@@ -204,4 +204,9 @@ class NewsController extends Controller
 
       return redirect('/publisher')->with(["success" => "Add new news success"]);
     }
+
+    public function showSavedNews ()
+    {
+        return view('news.savedNews.list',["newses" => News::all()]);
+    }
 }

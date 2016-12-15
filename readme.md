@@ -12,3 +12,10 @@ Web Application that retrieve news from popular news publisher and related opini
 - Clone or Download the source code from this repository
 - Run npm install to install npm component
 - Run composer install to install php dependencies
+
+#Thanks To
+- Laravel
+- SQLite
+- PHP HTML Parser
+- Aylien Text Analytic API
+- Twitter API
